@@ -1,4 +1,5 @@
 package boot;
+import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -10,15 +11,17 @@ import static org.junit.Assert.assertTrue;
  */
 public class ParkingLotTest {
 
-    
+    private String carNumber="MH43-S-7653";
+    private Car car;
+    @Before
+    public void setup(){
+        ParkingLot parkingLot = new ParkingLot();
 
-
+        car = new Car(carNumber);
+    }
     @Test
     public void parkingLotShouldGiveAParkingTicketWithCarNumberAfterParkingACar(){
 
-
-        String carNumber="MH43-S-7653";
-        Car car = new Car(carNumber);
         ParkingLot parkingLot = new ParkingLot();
         ParkingTicket parkingTicket = parkingLot.park(car);
         assertEquals(carNumber,parkingTicket.getNumber());
@@ -27,9 +30,6 @@ public class ParkingLotTest {
 //    @Test
 //    public void shouldBeAbleToFindAParkedCar(){
 //
-//
-//        Car car = new Car();
-//        ParkingLot parkingLot = new ParkingLot();
 //        parkingLot.park(car);
 //        parkingLot.find();
 //
